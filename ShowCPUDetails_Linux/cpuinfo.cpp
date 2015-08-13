@@ -19,6 +19,9 @@ QString CPUInfo::launchProgram(const QString &strprogram)
 
 QString CPUInfo::GetCPUInfo()
 {
+    if(QSysInfo::kernelType() != "linux")
+        return QString("Your OS : " + QSysInfo::kernelType() + " => is not supported at this point");
+
     // 'cat' is a lunux command, here its used for extracting details from '/proc/cpuinfo'
     return launchProgram("cat /proc/cpuinfo");
 }
